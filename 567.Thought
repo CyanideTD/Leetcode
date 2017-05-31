@@ -1,0 +1,4 @@
+Thought:
+	Idea: we can use two pointers to scan the second string to determine the substring. now the question is how to detremine how to move the two cursor, first we have to find the first letter in the s1, and we have to enlarge the substring untill we cover all letters in s1, if we encounter a letter that is not in s1, we hava to jump over this letter, if we encounter a letter that appear before, we can shorten the substring untill we find the letter appear before.
+	Algorithm: 
+	Data Structure: we use a hashmap to store the s1, and we use two pointers to scan the s2, and we have a counter to count how many letters we have to match. 
