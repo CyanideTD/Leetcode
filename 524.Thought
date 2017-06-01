@@ -1,0 +1,5 @@
+Thought:
+	Idea: we can have a int array to represent the given string, to find a match string in dict we simply scan the candidate string to find if they encounter a value that is bigger than 0. now the problem is that how can we find the smallest lexicographical order. The primitive idea is that we scan the array once we have a fitted candidate we hold it, until we find next smaller candidate.
+	Algorithm: hash to validate string, one pointer to scan the whole array.
+	Data Structure: int array to represent the hash.
+	Assumption:

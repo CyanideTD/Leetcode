@@ -1,0 +1,3 @@
+Thought:
+	Idea: We can have to pointers to represent the consecutive 1s. one slow pointer one fast pointer, slow represent the head, and fast represent the tail, while scanning, the fast pointer can scan at most one 0;
+	Algorithm: when encounter a 0, we always start from next one.
