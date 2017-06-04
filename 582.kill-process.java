@@ -5,12 +5,22 @@ public class Solution {
 	res.add(kill);
 	queue.add(kill);
 	int size = ppid.size();
+	Map<Integer, List<Integer>> map = new HashMap<>();
+	for (int i = 0; i < size; i++) {
+		if (map.containsKey(ppid.get(i))) {
+			map.get(ppid.get(i)).add(pid.get(i));
+		} else {
+			List<Integer> list = new ArrayList<>();
+			list.add(pid.get(i));
+			map.put(ppid.get(i), list);
+		}
+	}
 	while (!queue.isEmpty()) {
 		int cur = queue.poll();
-		for (int i = 0; i < size; i++) {
-			if (ppid.get(i) == cur) {
-				queue.add(pid.get(i));
-				res.add(pid.get(i));
+		if (map.containsKey(cur)) {
+			for (int next : map.get(cur)) {
+				queue.add(next);
+				res.add(next);
 			}
 		}
 	}
