@@ -1,0 +1,3 @@
+Thought:
+	Idea: Three pointers, first pointer to indicate the first index, second pointer to indicate the second index, first move the last pointer from last to second if three 
+	Assumption: 
