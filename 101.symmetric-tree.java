@@ -8,7 +8,13 @@
  * }
  */
 public class Solution {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
+    public boolean isSymmetric(TreeNode root) {
+    	if (root == null) {
+		return true;
+	}
+	return isSame(root.left, root.right);
+    }
+    public boolean isSame(TreeNode p, TreeNode q) {
     	if (p == null && q == null) {
 		return true;
 	}
@@ -18,8 +24,8 @@ public class Solution {
 	if (p.val != q.val) {
 		return false;
 	}
-	boolean left = isSameTree(p.left, q.left);
-	boolean right = isSameTree(p.right, q.right);
+	boolean left = isSame(p.left, q.right);
+	boolean right = isSame(p.right, q.left);
 	return left && right;
     }
 }
