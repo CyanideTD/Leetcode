@@ -1,30 +1,29 @@
 public class Solution {
     public double findMaxAverage(int[] nums, int k) {
-	int lo = Integer.MAX_VALUE;
-	int hi = Integer.MIN_VALUE;
+	int min = Integer.MAX_VALUE;
+	int max = Integer.MIN_VALUE;
 	for (int num : nums) {
-	    lo = Math.min(num, lo);
-	    hi = Math.max(num, hi);
+	    min = Math.min(num, min);
+	    max = Math.max(num, max);
 	}
-	double low = lo;
-	double high = hi;
-	while (high - low > 1e-6 ) {
-	    double mid = (high + low) / 2.0;
+	double lo = min;
+	double hi = max;
+	while (hi - lo > 1e-5) {
+	    double mid = (hi + lo) / 2;
 	    if (check(nums, k, mid)) {
-		low = mid;
+	    	lo = mid;
 	    } else {
-		high = mid;
+		hi = mid;
 	    }
 	}
-	return high;
+	return lo;
     }
-    private boolean check(int[] nums, int k, double avg) {
+    public boolean check(int[] nums, int k, double val) {
 	double[] arr = new double[nums.length];
-	double sum = 0;
-	for (int i = 0; i < nums.length; i++) {
-	    arr[i] = nums[i] - avg;
+	for (int i = 0; i < arr.length; i++) {
+	    arr[i] =nums[i] - val;
 	}
-	
+	double sum = 0;
 	for (int i = 0; i < k; i++) {
 	    sum += arr[i];
 	}
@@ -33,9 +32,9 @@ public class Solution {
 	}
 	double sum2 = 0;
 	double min = 0;
-	for (int i = k; i < nums.length; i++) {
-	    sum2 += arr[i - k];
+	for (int i = k; i < arr.length; i++) {
 	    sum += arr[i];
+	    sum2 += arr[i - k];
 	    min = Math.min(min, sum2);
 	    if (sum - min >= 0) {
 		return true;
