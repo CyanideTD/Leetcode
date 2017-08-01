@@ -12,15 +12,11 @@ public class Solution {
     public int reversePairs(int[] nums) {
 	int[] copy = Arrays.copyOf(nums, nums.length);
 	Arrays.sort(copy);
-	Map<Integer, Integer> map = new HashMap<>();
-	for (int i = 0; i < copy.length; i++) {
-	    map.put(copy[i], i + 1);
-	}
 	int[] bit = new int[nums.length + 1];
 	int sum = 0;
 	for (int i = nums.length - 1; i >= 0; i--) {
-	    sum += search(bit, index(copy,(double) nums[i] / 2));
-	    update(bit, map.get(nums[i]));
+	    sum += search(bit, index(copy,(long) nums[i] / 2));
+	    update(bit, index(copy,(long) nums[i]));
 	}
 	return sum;
     }
@@ -41,7 +37,7 @@ public class Solution {
 	    i += lowbit(i);
 	}
     }
-    public int index(int[] nums, double val) {
+    public int index(int[] nums, long val) {
 	int l = 0;
 	int r = nums.length - 1;
 	while (l + 1 < r) {
@@ -52,9 +48,7 @@ public class Solution {
 		l = mid;
 	    }
 	}
-	if (nums[l] >= val) {
-	    return l;
-	} else if (nums[r] < val) {
+	if (nums[r] <= val) {
 	    return r + 1;
 	} else {
 	    return l + 1;
